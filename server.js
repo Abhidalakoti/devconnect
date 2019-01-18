@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 const mongoose = require('mongoose');
-const users = require('./route/api/users');
-const profile = require('./route/api/profile'); 
-const posts = require('./route/api/post');
+
+
+const users = require('./routes/api/Users');
+const profile = require('./routes/api/profile'); 
+const posts = require('./routes/api/post');
 //DB Config
 
 const db = require('./config/keys').mongoURI;
@@ -16,7 +21,7 @@ mongoose
 app.get('/',(req,res) =>res.send('Hello World!'));
 
 //Use Routes
-app.use('./api/users',users);
+app.use('./api/Users',users);
 app.use('./api/profile',profile);
 app.use('./api/posts',posts);
 
