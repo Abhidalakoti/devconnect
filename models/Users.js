@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema =mongoose.Schema;
-
+const pass = encodeURIComponent("Abhi@1234");
+mongoose.connect('mongodb://abhinav:${pass}@ds011419.mlab.com:11419/devconnector');
 //Create Schema
 const UserSchema = new Schema({
 name:{
@@ -11,7 +12,7 @@ email:{
     type:String,
     required:true
 },
-passowrd:{
+password:{
     type:String,
     required:true
 },
